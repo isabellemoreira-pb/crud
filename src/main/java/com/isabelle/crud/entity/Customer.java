@@ -5,7 +5,7 @@ import java.math.BigDecimal; // mais seguro do que double pra valor monetário
 
 @Entity // essa classe representa uma tabela do banco
 @Table(name = "custumers") // define o nome da tabela
-public class Custumer {
+public class Customer {
 
     @Id // define a chave primária
     @GeneratedValue(strategy = GenerationType.IDENTITY) // faz o banco gerar id automaticamente
@@ -21,7 +21,7 @@ public class Custumer {
 
     private BigDecimal annualTpv;
 
-    public Custumer(){
+    public Customer(){
 
     }
 
