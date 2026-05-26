@@ -5,7 +5,7 @@ import com.isabelle.crud.service.CustomerService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/customers")
@@ -24,6 +24,16 @@ public class CustomerController {
     @GetMapping
     public List<Customer> getAllCustomers(){
         return customerService.getAllCustomers();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Customer> getCustomerById(@PathVariable Long id){
+        return customerService.getCustomerById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleletCustomer(@PathVariable Long id){
+        customerService.deleteCustomer(id);
     }
 
 }
