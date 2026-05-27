@@ -15,7 +15,7 @@ public class Customer {
 
     private String indicationDocumentType;
 
-    private Boolean custumerComapanyFlag;
+    private Boolean customerCompanyFlag;
 
     private String mcc;
 
@@ -45,12 +45,12 @@ public class Customer {
         this.indicationDocumentType = indicationDocumentType;
     }
 
-    public Boolean getCustumerComapanyFlag() {
-        return custumerComapanyFlag;
+    public Boolean getCustomerCompanyFlag() {
+        return customerCompanyFlag;
     }
 
-    public void setCustumerComapanyFlag(Boolean custumerComapanyFlag) {
-        this.custumerComapanyFlag = custumerComapanyFlag;
+    public void setCustomerCompanyFlag(Boolean customerCompanyFlag) {
+        this.customerCompanyFlag = customerCompanyFlag;
     }
 
     public String getMcc() {

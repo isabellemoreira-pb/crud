@@ -32,5 +32,17 @@ public class CustomerService {
         customerRepository.deleteById(id);
     }
 
+    public Customer updateCustomer(Long id, Customer updatedCustomer) {
+
+        Customer customer = customerRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+
+        customer.setMcc(updatedCustomer.getMcc());
+        customer.setAnnualTpv(updatedCustomer.getAnnualTpv());
+        customer.setCustomerCompanyFlag(updatedCustomer.getCustomerCompanyFlag());
+
+        return customerRepository.save(customer);
+    }
+
 }
 
