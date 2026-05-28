@@ -44,5 +44,9 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
+    public Optional<Customer> getCustomerByDocument(String document){
+        return customerRepository.findByDocument(document);
+    }
+
 }
 

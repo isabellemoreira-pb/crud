@@ -43,4 +43,10 @@ public class CustomerController {
         return customerService.updateCustomer(id, customer);
     }
 
+    @GetMapping("/document/{document}")
+    public Optional<Customer> getCustomerByDocument(@PathVariable String document){
+        return customerService.getCustomerByDocument(document);
+    }
+
+
 }
