@@ -17,6 +17,12 @@ public class CustomerService {
     }
 
     public Customer createCustomer(Customer customer){
+
+        // Validação de cadastrado duplicado
+        if (customerRepository.existsByDocument(customer.getDocument())){
+            throw new RuntimeException("Cliente já cadastrado com esse documento");
+        }
+
         return customerRepository.save(customer);
     }
 

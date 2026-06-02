@@ -4,6 +4,8 @@ import com.isabelle.crud.entity.Customer;
 import com.isabelle.crud.service.CustomerService;
 import org.springframework.web.bind.annotation.*;
 
+import jakarta.validation.Valid;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +19,7 @@ public class CustomerController {
     }
 
     @PostMapping
-    public Customer createCustomer(@RequestBody Customer customer){
+    public Customer createCustomer(@Valid @RequestBody Customer customer){
         return customerService.createCustomer(customer);
     }
 
@@ -39,7 +41,7 @@ public class CustomerController {
     @PutMapping("/{id}")
     public Customer updateCustomer(
         @PathVariable Long id,
-        @RequestBody Customer customer) {
+        @Valid @RequestBody Customer customer) {
         return customerService.updateCustomer(id, customer);
     }
 

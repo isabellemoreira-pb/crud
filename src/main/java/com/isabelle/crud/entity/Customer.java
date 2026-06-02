@@ -1,6 +1,9 @@
 package com.isabelle.crud.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 import java.math.BigDecimal; // mais seguro do que double pra valor monetário
 
 @Entity // essa classe representa uma tabela do banco
@@ -11,14 +14,19 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // faz o banco gerar id automaticamente
     private Long id;
 
+    @NotBlank
     private String document;
 
+    @NotBlank
     private String indicationDocumentType;
 
     private Boolean customerCompanyFlag;
 
+    @NotBlank
     private String mcc;
 
+    @NotNull
+    @PositiveOrZero
     private BigDecimal annualTpv;
 
     public Customer(){
