@@ -2,6 +2,7 @@ package com.isabelle.crud.service;
 
 import com.isabelle.crud.entity.Customer;
 import com.isabelle.crud.repository.CustomerRepository;
+import com.isabelle.crud.exception.CustomerAlreadyExistsException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,7 +21,9 @@ public class CustomerService {
 
         // Validação de cadastrado duplicado
         if (customerRepository.existsByDocument(customer.getDocument())){
-            throw new RuntimeException("Cliente já cadastrado com esse documento");
+            throw new CustomerAlreadyExistsException(
+                    "Cliente já cadastrado com esse documento"
+            );
         }
 
         return customerRepository.save(customer);
