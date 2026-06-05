@@ -1,5 +1,7 @@
 package com.isabelle.crud.controller;
 
+import com.isabelle.crud.dto.CustomerRequestDTO;
+import com.isabelle.crud.dto.CustomerResponseDTO;
 import com.isabelle.crud.entity.Customer;
 import com.isabelle.crud.service.CustomerService;
 import org.springframework.web.bind.annotation.*;
@@ -19,18 +21,58 @@ public class CustomerController {
     }
 
     @PostMapping
-    public Customer createCustomer(@Valid @RequestBody Customer customer){
-        return customerService.createCustomer(customer);
+    public CustomerResponseDTO createCustomer(
+            @Valid @RequestBody CustomerRequestDTO dto) {
+
+        Customer customer = new Customer();
+
+        customer.setDocument(dto.getDocument());
+
+        customer.setIndicationDocumentType(
+                dto.getIndicationDocumentType());
+
+        customer.setCustomerCompanyFlag(
+                dto.getCustomerCompanyFlag());
+
+        customer.setMcc(dto.getMcc());
+
+        customer.setAnnualTpv(
+                dto.getAnnualTpv());
+
+        Customer savedCustomer =
+                customerService.createCustomer(customer);
+
+        return new CustomerResponseDTO(
+                savedCustomer.getId(),
+                savedCustomer.getDocument(),
+                savedCustomer.getIndicationDocumentType(),
+                savedCustomer.getCustomerCompanyFlag(),
+                savedCustomer.getMcc(),
+                savedCustomer.getAnnualTpv()
+        );
     }
 
     @GetMapping
-    public List<Customer> getAllCustomers(){
-        return customerService.getAllCustomers();
+    public List<CustomerResponseDTO> getAllCustomers() {
+
+        return customerService
+                .getAllCustomers()
+                .stream()
+                .map(this::toResponseDTO)
+                .toList();
     }
 
     @GetMapping("/{id}")
-    public Optional<Customer> getCustomerById(@PathVariable Long id){
-        return customerService.getCustomerById(id);
+    public CustomerResponseDTO getCustomerById(
+            @PathVariable Long id) {
+
+        Customer customer =
+                customerService
+                        .getCustomerById(id)
+                        .orElseThrow(() ->
+                                new RuntimeException("Cliente não encontrado"));
+
+        return toResponseDTO(customer);
     }
 
     @DeleteMapping("/{id}")
@@ -46,8 +88,28 @@ public class CustomerController {
     }
 
     @GetMapping("/document/{document}")
-    public Optional<Customer> getCustomerByDocument(@PathVariable String document){
-        return customerService.getCustomerByDocument(document);
+    public CustomerResponseDTO getCustomerByDocument(
+            @PathVariable String document) {
+
+        Customer customer =
+                customerService
+                        .getCustomerByDocument(document)
+                        .orElseThrow(() ->
+                                new RuntimeException("Cliente não encontrado"));
+
+        return toResponseDTO(customer);
+    }
+
+    private CustomerResponseDTO toResponseDTO(Customer customer) {
+
+        return new CustomerResponseDTO(
+                customer.getId(),
+                customer.getDocument(),
+                customer.getIndicationDocumentType(),
+                customer.getCustomerCompanyFlag(),
+                customer.getMcc(),
+                customer.getAnnualTpv()
+        );
     }
 
 
