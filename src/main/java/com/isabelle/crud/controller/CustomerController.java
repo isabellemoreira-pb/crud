@@ -112,5 +112,10 @@ public class CustomerController {
         );
     }
 
+    // todo: olhar todo o arquivo
+    // todo: Ao inves de lançar o objeto, lançar dentro do Response Entity.
+    // todo: Quando não encontrar o documento lançar o 404
+    // todo: estudar http status
+
 
 }

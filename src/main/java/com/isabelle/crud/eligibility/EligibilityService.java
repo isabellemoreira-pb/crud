@@ -7,6 +7,7 @@ import java.util.Set;
 
 @Service
 public class EligibilityService {
+    //todo: Usar lista (ArrayList) no lugar de set<String>
     private static final Set<String> ALLOWED_MCCS = Set.of(
             "742",
             "1799",
@@ -36,6 +37,8 @@ public class EligibilityService {
         if (!ALLOWED_MCCS.contains(customer.getMcc())) {
             return false;
         }
+        //todo: Criar uma outra classe service de verificação de mcc (I.D)
+        //todo: método for pra fazer a verificação de mcc válido
 
         if (customer.getAnnualTpv().doubleValue() > 30000) {
             return false;

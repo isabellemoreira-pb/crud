@@ -7,7 +7,7 @@ import jakarta.validation.constraints.PositiveOrZero;
 import java.math.BigDecimal; // mais seguro do que double pra valor monetário
 
 @Entity // essa classe representa uma tabela do banco
-@Table(name = "custumers") // define o nome da tabela
+@Table(name = "customers") // define o nome da tabela
 public class Customer {
 
     @Id // define a chave primária
@@ -75,5 +75,17 @@ public class Customer {
 
     public void setAnnualTpv(BigDecimal annualTpv) {
         this.annualTpv = annualTpv;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", document='" + document + '\'' +
+                ", indicationDocumentType='" + indicationDocumentType + '\'' +
+                ", customerCompanyFlag=" + customerCompanyFlag +
+                ", mcc='" + mcc + '\'' +
+                ", annualTpv=" + annualTpv +
+                '}';
     }
 }

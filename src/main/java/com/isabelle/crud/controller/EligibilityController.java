@@ -29,5 +29,8 @@ public class EligibilityController {
                         new RuntimeException("Cliente não encontrado"));
 
         return eligibilityService.isEligible(customer);
+
+        //todo: não utilizar lambda.
     }
 }
+// todo: estudar @autowired.

@@ -5,3 +5,5 @@ public class CustomerAlreadyExistsException extends RuntimeException{
         super(message);
     }
 }
+// todo: Alterar ela pra 422.
+// todo: Usar Try-Catch
