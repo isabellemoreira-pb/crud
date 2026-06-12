@@ -78,8 +78,8 @@ public class Customer {
     }
 
     @Override
-    public String toString() {
-        return "Customer{" +
+        public String toString() {
+            return "Customer{" +
                 "id=" + id +
                 ", document='" + document + '\'' +
                 ", indicationDocumentType='" + indicationDocumentType + '\'' +

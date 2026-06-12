@@ -15,8 +15,7 @@ public class CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
 
-// O @Autowired foi inserido no lugar de:
-
+    // Injeção de dependência pelo construtor
 //    public CustomerService(CustomerRepository customerRepository) {
 //        this.customerRepository = customerRepository;
 //    }
